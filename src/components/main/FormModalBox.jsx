@@ -130,7 +130,6 @@ const FormModalBox = (props) => {
                 height: '10%',
                 backgroundColor: '#dfd3c3',
                 lineHeight: '40px',
-                fontSize: '25px',
                 borderRadius: '10px',
                 margin: '1% auto',
                 fontSize: '20px',

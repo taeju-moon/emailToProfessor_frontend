@@ -226,7 +226,6 @@ const CreateModalBox = (props) => {
             height: '10%',
             backgroundColor: '#dfd3c3',
             lineHeight: '43px',
-            fontSize: '25px',
             borderRadius: '10px',
             margin: '1% auto',
             fontSize: '20px',
@@ -263,6 +262,7 @@ const CreateModalBox = (props) => {
             <img
               style={{ width: '70px', height: '70px', marginTop: '10px' }}
               src="/img/professor.png"
+              alt="professor.png"
             ></img>
           </div>
           <div style={{ width: '80%', height: '60px', margin: '0px 10% 60px 10%' }}>

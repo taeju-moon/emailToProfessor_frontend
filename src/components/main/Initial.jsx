@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import { VisibilityRounded } from '@mui/icons-material';
 
 const Initial = () => {
   const [opacity, setOpacity] = useState(1);
@@ -8,7 +7,7 @@ const Initial = () => {
 
   useEffect(() => {
     softRemover(); // 해당 컴포넌트가 나타나면 함수가 바로실행됨.
-  }, [softRemover]);
+  }, [opacity]);
 
   const InitialBox = styled.div((props) => ({
     width: '100%',
@@ -35,6 +34,7 @@ const Initial = () => {
         <img
           style={{ width: '30%', height: '100%', margin: 'auto 35%' }}
           src="/img/initial.png"
+          alt="initial.png"
         ></img>
       </InitialBox>
     </>
