@@ -97,6 +97,7 @@ const FormModalBox = (props) => {
                 lineHeight: '30px',
                 borderRadius: '100%',
                 color: 'white',
+                cursor: 'pointer',
               }}
               onClick={onClickExit}
             >

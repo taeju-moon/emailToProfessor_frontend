@@ -65,7 +65,7 @@ const SearchBox = (props) => {
       </div>
       <div style={{ position: 'relative', width: '65%', margin: '0 17.5%' }}>
         <SearchInput
-          placeholder="ex. 빌넣, 사과, 증원, ..."
+          placeholder="ex. 증원, 과제, 성적, 출결, ..."
           onKeyPress={onKeyPressSearchInput}
           onChange={onChangeSearchInput}
         ></SearchInput>

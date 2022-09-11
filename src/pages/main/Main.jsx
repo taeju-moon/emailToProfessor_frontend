@@ -3,6 +3,7 @@ import Initial from '../../components/main/Initial';
 import SearchBox from '../../components/main/SearchBox';
 import FormBoxes from '../../components/main/FormBoxes';
 import CreateBar from '../../components/main/CreateBar';
+import Footer from '../../components/main/Footer';
 
 const Main = () => {
   const [searchText, setSearchText] = useState('');
@@ -31,6 +32,7 @@ const Main = () => {
       <div style={{ opacity: opacity }}>
         <SearchBox searchText={searchText} setSearchText={setSearchText}></SearchBox>
         <FormBoxes searchText={searchText}></FormBoxes>
+        <Footer></Footer>
       </div>
     </>
   );
