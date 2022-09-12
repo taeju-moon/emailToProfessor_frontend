@@ -52,7 +52,22 @@ const FormModalBox = (props) => {
     setStars(form && form.stars);
   }, [form && form.stars]);
 
+  const isStarClicked = () => {
+    const localStars = JSON.parse(window.localStorage.getItem('stars'));
+    localStars.forEach((localStar) => {
+      if (localStar === props.id) {
+        return true;
+      }
+    });
+    window.localStorage.setItem('stars', JSON.stringify([...localStars, props.id]));
+    return false;
+  };
+
   const onClickStar = () => {
+    if (isStarClicked()) {
+      alert('어디서 주작질을 하려는 것이냐!!');
+      return;
+    }
     setStars(stars + 1);
     axios
       .patch(`${process.env.REACT_APP_API_URL}/forms/${props.id}`, {
