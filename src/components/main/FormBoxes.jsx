@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import axios from 'axios';
 import { AiFillStar } from 'react-icons/ai';
 import FormModalBox from './FormModalBox';
+import Pagination from '@mui/material/Pagination';
 
 const FormBox = styled.div((props) => ({
   width: '250px',
@@ -27,15 +28,13 @@ const FormBoxes = (props) => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.PROD_APP_API_URL}/forms`)
+      .get(`${process.env.REACT_APP_API_URL}/forms`)
       .then(function (response) {
         // handle success
-        console.log(response.data.data.forms);
         setGetFormBox(response.data.data.forms);
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
       });
   }, []);
 
@@ -45,14 +44,17 @@ const FormBoxes = (props) => {
       (form) =>
         form.title.toLowerCase().includes(props.searchText) ||
         form.content.toLowerCase().includes(props.searchText) ||
-        form.category.name.toLowerCase().includes(props.searchText),
+        form.category.name.toLowerCase().includes(props.searchText) ||
+        form.writer.toLowerCase().includes(props.searchText),
     );
+
+  const [page, setPage] = useState(1);
 
   const ListFormBox =
     filterGetFormBox &&
     filterGetFormBox.map((form, index) => (
-      <>
-        <FormBox width={window.innerWidth} id={form._id} key={index} onClick={onClickFormBox}>
+      <div key={index}>
+        <FormBox width={window.innerWidth} id={form._id} onClick={onClickFormBox}>
           <div
             style={{
               width: '100px',
@@ -76,7 +78,7 @@ const FormBoxes = (props) => {
             {form.stars}
           </div>
         </FormBox>
-      </>
+      </div>
     ));
 
   return (
@@ -89,16 +91,27 @@ const FormBoxes = (props) => {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          alignItems: 'center',
+          alignItems: 'flex-start',
         }}
       >
         {ListFormBox && ListFormBox.length !== 0 ? (
-          ListFormBox
+          ListFormBox.reverse().slice((page - 1) * 9, page * 9)
         ) : (
           <div style={{ width: '100%', textAlign: 'center' }}>검색 결과가 없습니다</div>
         )}
       </div>
       {showModal ? <FormModalBox setShowModal={setShowModal} id={id}></FormModalBox> : null}
+      <Pagination
+        style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '60px' }}
+        count={Math.ceil(ListFormBox && ListFormBox.length / 9)}
+        variant="outlined"
+        shape="rounded"
+        defaultPage={1}
+        onChange={(e) => {
+          setPage(e.target.outerText);
+          window.scrollTo(0, 250);
+        }}
+      />
     </>
   );
 };

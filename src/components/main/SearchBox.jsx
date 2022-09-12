@@ -19,14 +19,12 @@ const SearchInput = styled.input`
 const SearchBox = (props) => {
   useEffect(() => {
     axios
-      .get(`${process.env.PROD_APP_API_URL}/category`)
+      .get(`${process.env.REACT_APP_API_URL}/category`)
       .then(function (response) {
         // handle success
-        console.log(response.data);
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
       });
   }, []);
 
@@ -65,7 +63,7 @@ const SearchBox = (props) => {
       </div>
       <div style={{ position: 'relative', width: '65%', margin: '0 17.5%' }}>
         <SearchInput
-          placeholder="ex. 빌넣, 사과, 증원, ..."
+          placeholder="ex. 증원, 과제, 성적, 출결, ..."
           onKeyPress={onKeyPressSearchInput}
           onChange={onChangeSearchInput}
         ></SearchInput>

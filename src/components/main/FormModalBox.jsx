@@ -36,15 +36,13 @@ const FormModalBox = (props) => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.PROD_APP_API_URL}/forms/${props.id}`)
+      .get(`${process.env.REACT_APP_API_URL}/forms/${props.id}`)
       .then(function (response) {
         // handle success
-        console.log(response.data.data.form);
         setForm(response.data.data.form);
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
       });
   }, []);
 
@@ -57,17 +55,13 @@ const FormModalBox = (props) => {
   const onClickStar = () => {
     setStars(stars + 1);
     axios
-      .patch(`${process.env.PROD_APP_API_URL}/forms/${props.id}`, {
+      .patch(`${process.env.REACT_APP_API_URL}/forms/${props.id}`, {
         title: form.title,
         content: form.content,
         stars: stars + 1,
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      .then(function (response) {})
+      .catch(function (error) {});
   };
   return (
     <>
@@ -97,6 +91,7 @@ const FormModalBox = (props) => {
                 lineHeight: '30px',
                 borderRadius: '100%',
                 color: 'white',
+                cursor: 'pointer',
               }}
               onClick={onClickExit}
             >
@@ -129,7 +124,6 @@ const FormModalBox = (props) => {
                 height: '10%',
                 backgroundColor: '#dfd3c3',
                 lineHeight: '40px',
-                fontSize: '25px',
                 borderRadius: '10px',
                 margin: '1% auto',
                 fontSize: '20px',

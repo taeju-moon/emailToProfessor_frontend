@@ -14,7 +14,7 @@ const ModalBox = styled.div((props) => ({
   overflow: 'scroll-y',
   borderRadius: '15px',
   border: 'solid #dfd3c3',
-  padding: '10px',
+  padding: '15px',
 }));
 
 const AlertModalBox = styled.div((props) => ({
@@ -35,15 +35,13 @@ const CreateModalBox = (props) => {
   const [categoryList, setCategoryList] = useState(null);
   useEffect(() => {
     axios
-      .get(`${process.env.PROD_APP_API_URL}/category`)
+      .get(`${process.env.REACT_APP_API_URL}/category`)
       .then(function (response) {
         // handle success
-        console.log(response.data.data);
         setCategoryList(response.data.data);
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
       });
   }, []);
 
@@ -85,7 +83,7 @@ const CreateModalBox = (props) => {
     } else {
       console.log(category);
       axios
-        .post(`${process.env.PROD_APP_API_URL}/forms`, {
+        .post(`${process.env.REACT_APP_API_URL}/forms`, {
           title: title,
           content: content,
           writer: writer,
@@ -138,15 +136,17 @@ const CreateModalBox = (props) => {
         <div
           style={{
             width: '80%',
-            height: '5%',
             margin: 'auto',
-            marginTop: '10px',
+            marginTop: '0px',
+            marginBottom: '10px',
             textAlign: 'center',
             outline: 'none',
-            fontSize: '15px',
+            fontSize: '8px',
+            color: 'red',
           }}
         >
-          카테고리 선택
+          <div>한 번 쓴 글은 수정/삭제가 불가합니다</div>
+          <div>논란의 여지가 있는 글 작성 시 강제로 삭제될 수 있습니다</div>
         </div>
         <select
           name="category"
@@ -223,11 +223,11 @@ const CreateModalBox = (props) => {
             width: '60%',
             height: '10%',
             backgroundColor: '#dfd3c3',
-            lineHeight: '40px',
-            fontSize: '25px',
+            lineHeight: '43px',
             borderRadius: '10px',
             margin: '1% auto',
             fontSize: '20px',
+            color: '#6c5d53',
           }}
           onClick={onClickCreate}
         >
@@ -249,13 +249,21 @@ const CreateModalBox = (props) => {
                 lineHeight: '30px',
                 borderRadius: '100%',
                 color: 'white',
+                cursor: 'pointer',
               }}
               onClick={onClickExitAlert}
             >
               X
             </div>
           </div>
-          <div style={{ width: '80%', height: '60px', margin: '60px 10%' }}>
+          <div>
+            <img
+              style={{ width: '70px', height: '70px', marginTop: '10px' }}
+              src="/img/professor.png"
+              alt="professor.png"
+            ></img>
+          </div>
+          <div style={{ width: '80%', height: '60px', margin: '0px 10% 60px 10%' }}>
             학생, 양식을 모두 채우고 다시 제출하도록
           </div>
         </AlertModalBox>
