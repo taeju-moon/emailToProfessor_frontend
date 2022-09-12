@@ -54,13 +54,16 @@ const FormModalBox = (props) => {
 
   const isStarClicked = () => {
     const localStars = JSON.parse(window.localStorage.getItem('stars'));
-    if (!localStars) return false;
-    localStars.forEach((localStar) => {
-      if (localStar === props.id) {
+    if (localStars) {
+      if (localStars.indexOf(props.id) !== -1) {
         return true;
       }
-    });
-    window.localStorage.setItem('stars', JSON.stringify([...localStars, props.id]));
+    }
+    if (localStars) {
+      window.localStorage.setItem('stars', JSON.stringify([...localStars, props.id]));
+    } else {
+      window.localStorage.setItem('stars', JSON.stringify([props.id]));
+    }
     return false;
   };
 
