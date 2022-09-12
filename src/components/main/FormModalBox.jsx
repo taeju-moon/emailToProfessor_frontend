@@ -54,7 +54,8 @@ const FormModalBox = (props) => {
 
   const isStarClicked = () => {
     const localStars = JSON.parse(window.localStorage.getItem('stars'));
-    localStars?.forEach((localStar) => {
+    if (!localStars) return false;
+    localStars.forEach((localStar) => {
       if (localStar === props.id) {
         return true;
       }
