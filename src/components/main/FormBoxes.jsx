@@ -97,7 +97,7 @@ const FormBoxes = (props) => {
         }}
       >
         {ListFormBox && ListFormBox.length !== 0 ? (
-          ListFormBox.slice((page - 1) * 9, page * 9)
+          ListFormBox.reverse().slice((page - 1) * 9, page * 9)
         ) : (
           <div style={{ width: '100%', textAlign: 'center' }}>검색 결과가 없습니다</div>
         )}
