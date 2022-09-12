@@ -107,6 +107,8 @@ const FormBoxes = (props) => {
         variant="outlined"
         shape="rounded"
         defaultPage={1}
+        hideNextButton={true}
+        hidePrevButton={true}
         onChange={(e) => {
           setPage(e.target.outerText);
           window.scrollTo(0, 250);
