@@ -69,7 +69,7 @@ const FormModalBox = (props) => {
 
   const onClickStar = () => {
     if (isStarClicked()) {
-      alert('어디서 주작질을 하려는 것이냐!!');
+      alert('학생. 좋아요는 두 번 누를 수 없어요.');
       return;
     }
     setStars(stars + 1);
