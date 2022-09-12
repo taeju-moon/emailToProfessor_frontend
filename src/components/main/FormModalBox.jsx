@@ -36,7 +36,7 @@ const FormModalBox = (props) => {
 
   useEffect(() => {
     axios
-      .get(`http://3.35.11.39:8000/forms/${props.id}`)
+      .get(`${process.env.PROD_APP_API_URL}/forms/${props.id}`)
       .then(function (response) {
         // handle success
         console.log(response.data.data.form);
@@ -57,7 +57,7 @@ const FormModalBox = (props) => {
   const onClickStar = () => {
     setStars(stars + 1);
     axios
-      .patch(`http://3.35.11.39:8000/forms/${props.id}`, {
+      .patch(`${process.env.PROD_APP_API_URL}/forms/${props.id}`, {
         title: form.title,
         content: form.content,
         stars: stars + 1,

@@ -35,7 +35,7 @@ const CreateModalBox = (props) => {
   const [categoryList, setCategoryList] = useState(null);
   useEffect(() => {
     axios
-      .get('http://3.35.11.39:8000/category')
+      .get(`${process.env.PROD_APP_API_URL}/category`)
       .then(function (response) {
         // handle success
         console.log(response.data.data);
@@ -85,7 +85,7 @@ const CreateModalBox = (props) => {
     } else {
       console.log(category);
       axios
-        .post('http://3.35.11.39:8000/forms', {
+        .post(`${process.env.PROD_APP_API_URL}/forms`, {
           title: title,
           content: content,
           writer: writer,

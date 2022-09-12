@@ -27,7 +27,7 @@ const FormBoxes = (props) => {
 
   useEffect(() => {
     axios
-      .get('http://3.35.11.39:8000/forms')
+      .get(`${process.env.PROD_APP_API_URL}/forms`)
       .then(function (response) {
         // handle success
         console.log(response.data.data.forms);
@@ -84,10 +84,12 @@ const FormBoxes = (props) => {
       <div
         style={{
           width: '65%',
-          margin: '0 20%',
+          margin: '0 auto',
           marginTop: '40px',
           display: 'flex',
           flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
       >
         {ListFormBox && ListFormBox.length !== 0 ? (

@@ -19,7 +19,7 @@ const SearchInput = styled.input`
 const SearchBox = (props) => {
   useEffect(() => {
     axios
-      .get('http://3.35.11.39:8000/category')
+      .get(`${process.env.PROD_APP_API_URL}/category`)
       .then(function (response) {
         // handle success
         console.log(response.data);
