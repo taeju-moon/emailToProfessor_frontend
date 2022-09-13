@@ -22,6 +22,7 @@ const FormModalBox = (props) => {
   const handleCopyClipBoard = async (text) => {
     try {
       await navigator.clipboard.writeText(text);
+      await axios.patch(`${process.env.REACT_APP_API_URL}/count/copiedTime`);
       alert('복사 성공!');
     } catch (error) {
       alert('복사 실패!');

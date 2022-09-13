@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import axios from 'axios';
 
 const Initial = () => {
   const [opacity, setOpacity] = useState(1);
   const [visibility, setVisibility] = useState('visible');
 
-  useEffect(() => {
+  useEffect(async () => {
     softRemover(); // 해당 컴포넌트가 나타나면 함수가 바로실행됨.
   }, [opacity]);
 
